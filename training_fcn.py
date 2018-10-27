@@ -15,7 +15,7 @@ from data.PyData import ISICDataSet, Ph2DataSet, JSTRDataset
 from torch.utils.data import DataLoader
 from torchvision import transforms, utils
 
-gpu_id = 1
+gpu_id = 0
 
 tsfm = transforms.Compose([transforms.Resize((256,256)),
                            # transforms.RandomVerticalFlip(0.5),

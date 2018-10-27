@@ -13,8 +13,11 @@ data, _h = nrrd.read(data_path)
 label, _d = nrrd.read(label_path)
 
 data = data/data.max()
-print(data.shape)
-print(label[:,:,i].max())
+number_of_data = data.shape[2]
 
-plt.imshow(label[:,:,i])
-plt.savefig('1.png')
+for i in range(number_of_data):
+  plt.imshow(data[:,:,i])
+  plt.savefig('temp/' + str(i) + "_data.png")
+
+  plt.imshow(label[:, :, i])
+  plt.savefig('temp/' + str(i) + "_label.png")
