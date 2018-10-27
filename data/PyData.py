@@ -11,12 +11,29 @@ from skimage import io
 from skimage.transform import resize
 
 class YaoZhuiDataSet(Dataset):
-  def __init__(self):
-    pass
+  def __init__(self, d_path, l_path, transforms = None):
+    self.data_path = d_path
+    self.label_path = l_path
+    self.transform = transforms
+
   def __getitem__(self, index):
-    pass
+    def last_4chars(x):
+      return (x[-10:])
+
+    data_file = os.listdir(self.data_path)
+    label_file = os.listdir(self.label_path)
+
+    label_list = sorted(label_file, key=last_4chars)
+    data_list = sorted(data_file, key=last_4chars)
+
+    img = Image.open(self.data_path + data_list[index])
+    lab = Image.open(self.label_path + label_list[index])
+
+    if self.transform:
+      return self.transform(img), self.transform(lab)
+
   def __len__(self):
-    pass
+    return len(os.listdir(self.data_path))
 
 
 

@@ -1,5 +1,6 @@
 import numpy as np
 import nrrd
+import scipy.misc
 
 import matplotlib.pyplot as plt
 
@@ -16,8 +17,5 @@ data = data/data.max()
 number_of_data = data.shape[2]
 
 for i in range(number_of_data):
-  plt.imshow(data[:,:,i])
-  plt.savefig('temp/' + str(i) + "_data.png")
-
-  plt.imshow(label[:, :, i])
-  plt.savefig('temp/' + str(i) + "_label.png")
+  scipy.misc.imsave('temp/data/data_' + str(i) + ".jpeg", data[:,:,i])
+  scipy.misc.imsave('temp/label/label_' + str(i) + ".jpeg", label[:, :, i])
