@@ -10,6 +10,18 @@ from skimage import color
 from skimage import io
 from skimage.transform import resize
 
+class YaoZhuiDataSet(Dataset):
+  def __init__(self):
+    pass
+  def __getitem__(self, index):
+    pass
+  def __len__(self):
+    pass
+
+
+
+
+
 class ISICDataSet(Dataset):
 
   def __init__(self, d_path, l_path, transforms = None):
@@ -69,16 +81,6 @@ class Ph2DataSet(Dataset):
   def __len__(self):
     return len(self.root_list)
 
-class PROMISEDataSet(Dataset):
-  def __init__(self, d_path, l_path, transforms=None):
-    self.data_path = d_path
-    self.label_path = l_path
-    self.transform = transforms
-  def __getitem__(self, item):
-    # im = Image.fromarray(np.uint8(cm.gist_earth(myarray) * 255))
-    pass
-  def __len__(self):
-    pass
 
 
 class PatchDataset(Dataset):
